@@ -8,14 +8,18 @@
   },
   "dependencies": {
     "@aspnet/signalr": "^1.1.4",
+    "element-ui": "^2.4.5",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3"
   },
   "devDependencies": {
     "@vue/cli-plugin-typescript": "^3.7.0",
     "@vue/cli-service": "^3.7.0",
+    "node-sass": "^4.9.2",
+    "sass-loader": "^7.0.3",
     "typescript": "^3.4.3",
     "vue-cli-plugin-axios": "0.0.4",
+    "vue-cli-plugin-element": "^1.0.1",
     "vue-template-compiler": "^2.5.21"
   }
 }
