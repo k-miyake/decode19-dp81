@@ -1,0 +1,22 @@
+{
+  "bindings": [
+    {
+      "type": "cosmosDBTrigger",
+      "name": "documents",
+      "direction": "in",
+      "leaseCollectionName": "leases",
+      "connectionStringSetting": "dp81-cdb_DOCUMENTDB",
+      "databaseName": "decode19db",
+      "collectionName": "tweets",
+      "createLeaseCollectionIfNotExists": "true"
+    },
+    {
+      "type": "signalR",
+      "name": "signalRMessages",
+      "hubName": "tweet",
+      "connectionStringSetting": "dp81-sr_SIGNALR",
+      "direction": "out"
+    }
+  ],
+  "scriptFile": "../dist/CosmosTrigger/index.js"
+}
