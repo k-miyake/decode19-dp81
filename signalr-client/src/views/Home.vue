@@ -15,22 +15,24 @@ import {
   LogLevel,
   JsonHubProtocol
 } from "@aspnet/signalr";
+import { constants } from "crypto";
 
 export default Vue.extend({
   name: "home",
   data() {
     return {
-      baseUrl: "http://localhost:7071/api"
+      baseUrl: process.env.VUE_APP_HOST as string
     };
   },
 
   methods: {
-    displayTweet(tweets: Object[]): void {
+    displayTweet(tweets: any): void {
       console.log(tweets[0]);
     }
   },
 
   created: async function(): Promise<void> {
+    console.log("VUE_APP_HOST: ", process.env.VUE_APP_HOST);
     // SignalRとコネクションを作成
     const connection = new HubConnectionBuilder()
       .withUrl(this.baseUrl)
@@ -45,7 +47,7 @@ export default Vue.extend({
       .catch(console.error);
 
     // SignalRからの呼び出し
-    connection.on("newMessage", tweets => this.displayTweet(tweets));
+    connection.on("newMessage", (tweets: any) => this.displayTweet(tweets));
 
     // 切断
     connection.onclose(() => console.log("disconnected"));
