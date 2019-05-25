@@ -1,9 +1,13 @@
 <template>
   <div class="home">
-    <img
-      alt="Vue logo"
-      src="../assets/logo.png"
-    >
+    <ul>
+      <li
+        v-for="tweet in tweets"
+        v-bind:key="tweet.id"
+      >
+        {{ tweet.tweetText }}
+      </li>
+    </ul>
   </div>
 </template>
 
@@ -17,17 +21,30 @@ import {
 } from "@aspnet/signalr";
 import { constants } from "crypto";
 
+class Tweet {
+  id: string = "";
+  tweetText: string = "";
+  lang: string = "";
+  name: string = "";
+  userId: string = "";
+  _ts: number = 0;
+}
+
 export default Vue.extend({
   name: "home",
   data() {
     return {
-      baseUrl: process.env.VUE_APP_HOST as string
+      baseUrl: process.env.VUE_APP_HOST as string,
+      tweets: [] as Tweet[]
     };
   },
 
   methods: {
-    displayTweet(tweets: any): void {
-      console.log(tweets[0]);
+    displayTweet(messages: Tweet[]): void {
+      messages.forEach((item: Tweet) => {
+        this.tweets.push(item);
+        console.log(item);
+      });
     }
   },
 
