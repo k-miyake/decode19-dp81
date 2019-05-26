@@ -5,6 +5,7 @@
       "name": "documents",
       "direction": "in",
       "leaseCollectionName": "leases",
+      "feedPollDelay": 500,
       "connectionStringSetting": "dp81-cdb_DOCUMENTDB",
       "databaseName": "decode19db",
       "collectionName": "tweets",

@@ -9,8 +9,8 @@
         <div class="block">
           <el-timeline>
             <el-timeline-item
-              v-for="tweet in tweets"
-              v-bind:key="tweet.id"
+              v-for="tweet in reversedTweets"
+              :key="tweet.id"
               :timestamp="tweet.timeStamp"
               placement="top"
             >
@@ -47,6 +47,7 @@ import {
 } from "@aspnet/signalr";
 import { constants } from "crypto";
 import { DateType } from "element-ui/types/calendar";
+import { treeNode } from "element-ui/types/table";
 
 // API ペイロード
 class Tweet {
@@ -76,6 +77,12 @@ export default Vue.extend({
         this.tweets.push(item);
         console.log(item);
       });
+    }
+  },
+
+  computed: {
+    reversedTweets(): Tweet[] {
+      return this.tweets.reverse();
     }
   },
 
