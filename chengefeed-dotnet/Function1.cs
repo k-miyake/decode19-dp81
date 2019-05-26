@@ -16,7 +16,7 @@ namespace chengefeed_dotnet
 
         private readonly AppDbContext _context;
 
-        [FunctionName("Function1")]
+        [FunctionName("ChangeFeedFunction")]
         public async Task Run([CosmosDBTrigger(
             databaseName: "decode19db",
             collectionName: "tweets",
